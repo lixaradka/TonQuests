@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Статистика бота</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .stat { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>📊 Статистика бота</h1>
+    
+    <div class="stat">
+        <strong>👥 Пользователи:</strong> {{ total_users }}
+    </div>
+    
+    <div class="stat">
+        <strong>✅ Выполнено заданий:</strong> {{ total_completed_tasks }}
+    </div>
+    
+    <div class="stat">
+        <strong>💰 Общий баланс:</strong> {{ total_balances }}₽
+    </div>
+    
+    <div class="stat">
+        <strong>💸 Всего выплат:</strong> {{ total_withdrawals }}₽
+    </div>
+    
+    <h3>Последние выплаты:</h3>
+    {% for withdrawal in last_withdrawals %}
+    <div class="stat">
+        👤 User {{ withdrawal.user_id }}: {{ withdrawal.amount }}₽ 
+        <small>({{ withdrawal.timestamp | datetime }})</small>
+    </div>
+    {% endfor %}
+</body>
+</html>
